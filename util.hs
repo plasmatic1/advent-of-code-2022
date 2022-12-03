@@ -8,3 +8,7 @@ splitHelper t (x:xs) acc = if x == t
 
 split :: (Eq a) => a -> [a] -> [[a]]
 split t lst = splitHelper t lst []
+
+chunksOf :: Int -> [a] -> [[a]]
+chunksOf sz [] = []
+chunksOf sz xs = (take sz xs):(chunksOf sz (drop sz xs))
