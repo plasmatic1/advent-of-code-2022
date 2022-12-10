@@ -19,3 +19,7 @@ chunksOf sz xs = (take sz xs):(chunksOf sz (drop sz xs))
 
 count :: (a -> Bool) -> [a] -> Int
 count f xs = length $ filter f xs
+
+flatMap :: (a -> [b]) -> [a] -> [b]
+flatMap _ [] = []
+flatMap f (x:xs) = (f x) ++ (flatMap f xs)
