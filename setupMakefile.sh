@@ -12,14 +12,16 @@ for ((i=1;i<=$NDAYS;i++)); do
 done
 
 # Write Makefile
-echo "all: ${stubs[@]}" > Makefile
+echo "ARGS=-\"package mtl\"" > Makefile
+echo >> Makefile
+echo "all: ${stubs[@]}" >> Makefile
 echo >> Makefile
 
 for ((i=1;i<=$NDAYS;i++)); do
     for ((j=1;j<=$NTASKS;j++)); do
         stub="day${i}t${j}"
         echo "$stub: $stub.hs util.hs" >> Makefile
-        echo "	ghc $stub.hs util.hs -o $stub" >> Makefile
+        echo "	ghc \$(ARGS) $stub.hs util.hs -o $stub" >> Makefile
         echo >> Makefile
     done
 done

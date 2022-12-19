@@ -23,3 +23,9 @@ count f xs = length $ filter f xs
 flatMap :: (a -> [b]) -> [a] -> [b]
 flatMap _ [] = []
 flatMap f (x:xs) = (f x) ++ (flatMap f xs)
+
+(&+) :: (Num a) => (a, a) -> (a, a) -> (a, a)
+(&+) (a, b) (c, d) = (a + c, b + d)
+
+(&-) :: (Num a) => (a, a) -> (a, a) -> (a, a)
+(&-) (a, b) (c, d) = (a - c, b - d)
